@@ -8,7 +8,7 @@ import {
 } from "react-icons/hi2";
 
 import DataItem from "../../ui/DataItem";
-import { Flag } from "../../ui/Flag";
+import Flag from "../../ui/Flag";
 
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
 
@@ -77,9 +77,10 @@ const Price = styled.div`
   margin-top: 2.4rem;
 
   background-color: ${(props) =>
-    props.isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
+    props.$hasPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
+
   color: ${(props) =>
-    props.isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
+    props.$hasPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
 
   & p:last-child {
     text-transform: uppercase;
@@ -93,7 +94,6 @@ const Price = styled.div`
     color: currentColor !important;
   }
 `;
-
 const Footer = styled.footer`
   padding: 1.6rem 4rem;
   font-size: 1.2rem;
@@ -114,8 +114,8 @@ function BookingDataBox({ booking }) {
     totalPrice,
     hasBreakfast,
     observations,
-    isPaid,
-    guests: { fullName: guestName, email, country, countryFlag, nationalID },
+    hasPaid,
+    guests: { fullName: guestName, email, countryFlag, nationalID },
     cabins: { name: cabinName },
   } = booking;
 
@@ -140,7 +140,7 @@ function BookingDataBox({ booking }) {
 
       <Section>
         <Guest>
-          {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
+          {countryFlag && <Flag countryCode={countryFlag} />}
           <p>
             {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ""}
           </p>
@@ -163,17 +163,17 @@ function BookingDataBox({ booking }) {
           {hasBreakfast ? "Yes" : "No"}
         </DataItem>
 
-        <Price isPaid={isPaid}>
+        <Price $hasPaid={hasPaid}>
           <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
             {formatCurrency(totalPrice)}
 
             {hasBreakfast &&
               ` (${formatCurrency(cabinPrice)} cabin + ${formatCurrency(
-                extrasPrice
+                extrasPrice,
               )} breakfast)`}
           </DataItem>
 
-          <p>{isPaid ? "Paid" : "Will pay at property"}</p>
+          <p>{hasPaid ? "Paid" : "Will pay at property"}</p>
         </Price>
       </Section>
 
