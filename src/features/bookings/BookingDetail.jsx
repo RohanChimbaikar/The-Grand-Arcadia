@@ -20,6 +20,7 @@ import { useCheckout } from "./useCheckout";
 import Modal from "../../ui/Modal";
 import { useDeleteBooking } from "./useDeleteBooking";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import toast from "react-hot-toast";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -41,6 +42,12 @@ function BookingDetail() {
   const navigate = useNavigate();
 
   if (isLoading || isCheckingOut) return <Spinner />;
+
+  if (!booking) {
+    toast.error("Booking could not be found");
+    navigate("/bookings");
+    return;
+  }
 
   const { id, status } = booking;
   return (

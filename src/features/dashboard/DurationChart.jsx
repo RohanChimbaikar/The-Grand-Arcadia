@@ -1,4 +1,14 @@
 import styled from "styled-components";
+import Heading from "../../ui/Heading";
+import {
+  Cell,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 const ChartBox = styled.div`
   /* Box */
@@ -105,28 +115,106 @@ const startDataDark = [
 ];
 
 function prepareData(startData, stays) {
-  // A bit ugly code, but sometimes this is what it takes when working with real data 😅
-
   function incArrayValue(arr, field) {
     return arr.map((obj) =>
-      obj.duration === field ? { ...obj, value: obj.value + 1 } : obj
+      obj.duration === field ? { ...obj, value: obj.value + 1 } : obj,
     );
   }
 
-  const data = stays
+  return stays
     .reduce((arr, cur) => {
-      const num = cur.numNights;
+      const num = cur.numberOfNights;
+
+      if (!num) return arr;
+
       if (num === 1) return incArrayValue(arr, "1 night");
       if (num === 2) return incArrayValue(arr, "2 nights");
       if (num === 3) return incArrayValue(arr, "3 nights");
-      if ([4, 5].includes(num)) return incArrayValue(arr, "4-5 nights");
-      if ([6, 7].includes(num)) return incArrayValue(arr, "6-7 nights");
+      if (num === 4 || num === 5) return incArrayValue(arr, "4-5 nights");
+      if (num === 6 || num === 7) return incArrayValue(arr, "6-7 nights");
       if (num >= 8 && num <= 14) return incArrayValue(arr, "8-14 nights");
       if (num >= 15 && num <= 21) return incArrayValue(arr, "15-21 nights");
-      if (num >= 21) return incArrayValue(arr, "21+ nights");
+      if (num > 21) return incArrayValue(arr, "21+ nights");
+
       return arr;
     }, startData)
     .filter((obj) => obj.value > 0);
-
-  return data;
 }
+function DurationChart({ confirmedStays }) {
+  const { isDarkMode } = useDarkMode();
+
+  const startData = isDarkMode ? startDataDark : startDataLight;
+
+  const data = prepareData(startData, confirmedStays);
+
+  return (
+    <ChartBox>
+      <Heading as="h2">Stay Duration Summary</Heading>
+      <ResponsiveContainer width="100%" height={240}>
+        <PieChart>
+          <Tooltip
+            contentStyle={{
+              borderRadius: "1rem",
+              border: "1px solid var(--color-grey-700)",
+              backgroundColor: "var(--color-grey-50)",
+            }}
+          />
+          <Pie
+            data={data}
+            nameKey="duration"
+            dataKey="value"
+            innerRadius={85}
+            outerRadius={110}
+            cx="40%"
+            cy="50%"
+            paddingAngle={2}
+          >
+            {data.map((entry) => {
+              return (
+                <Cell
+                  fill={entry.color}
+                  key={entry.color}
+                  stroke={entry.color}
+                />
+              );
+            })}
+          </Pie>
+          <text
+            x="27%"
+            y="47%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="var(--color-grey-600)"
+            fontSize="18"
+            fontWeight="600"
+          >
+            Total Stays
+          </text>
+
+          <text
+            x="28%"
+            y="60%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="var(--color-grey-800)"
+            fontSize="28"
+            fontWeight="700"
+          >
+            {confirmedStays.length}
+          </text>
+
+          <Legend
+            verticalAlign="middle"
+            align="right"
+            width="30%"
+            layout="vertical"
+            iconSize={15}
+            iconType="circle"
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </ChartBox>
+  );
+}
+
+export default DurationChart;

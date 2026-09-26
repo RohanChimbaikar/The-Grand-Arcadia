@@ -10,10 +10,10 @@ const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
- 
 `;
 
 const StyledNavLink = styled(NavLink)`
+  &,
   &:link,
   &:visited {
     display: flex;
@@ -23,31 +23,39 @@ const StyledNavLink = styled(NavLink)`
     color: var(--color-grey-600);
     font-size: 1.6rem;
     font-weight: 500;
+
     padding: 1.2rem 2.4rem;
-    transition: all 0.3s;
+    border-radius: var(--border-radius-md);
+
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
   }
 
-  /* This works because react-router places the active class on the active NavLink */
-  &:hover,
-  &:active,
-  &.active:link,
-  &.active:visited {
+  &:hover {
     color: var(--color-brand-600);
-    background-color: var(--color-grey-100);
-    border-radius: var(--border-radius-sm);
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  &.active {
+    color: var(--color-brand-600);
+
+    background-color: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
   }
 
   & svg {
     width: 2.4rem;
     height: 2.4rem;
+
     color: var(--color-grey-400);
-    transition: all 0.3s;
+
+    transition: color 0.2s ease;
   }
 
   &:hover svg,
-  &:active svg,
-  &.active:link svg,
-  &.active:visited svg {
+  &.active svg {
     color: var(--color-brand-600);
   }
 `;
@@ -74,7 +82,7 @@ function MainNav() {
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/account">
+          <StyledNavLink to="/users">
             <UsersIcon />
             Users
           </StyledNavLink>
