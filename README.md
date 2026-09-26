@@ -28,93 +28,101 @@ The application uses **Supabase** for authentication, database persistence, and 
 
 ---
 
+## 🚀 Live Demo
+
+[**Visit Grand Arcadia →**](https://thegrandarcadia.netlify.app)
+
+## 🎥 Demo Video
+
+[**Watch the Grand Arcadia demo →**](https://drive.google.com/file/d/1rABnx1msUkl_DkC26_3RJVUxCb2ZcBMT/view?usp=sharing)
+
+---
+
 ## What Grand Arcadia Provides
 
 ### 📊 Operations Dashboard
 
 The dashboard provides an at-a-glance view of the hotel's current activity.
 
-* Total bookings
-* Sales and revenue overview
-* Check-ins
-* Occupancy rate
-* Recent booking activity
-* Today's arrivals and departures
-* Sales trend visualization
-* Stay-duration analysis
-* Configurable reporting periods
+- Total bookings
+- Sales and revenue overview
+- Check-ins
+- Occupancy rate
+- Recent booking activity
+- Today's arrivals and departures
+- Sales trend visualization
+- Stay-duration analysis
+- Configurable reporting periods
 
 ### 📅 Booking Management
 
 Manage and monitor hotel reservations from a centralized booking interface.
 
-* Paginated booking list
-* Booking status filtering
-* Sorting
-* Booking details
-* Check-in workflow
-* Check-out workflow
-* Breakfast add-on handling
-* Payment confirmation
-* Booking deletion
+- Paginated booking list
+- Booking status filtering
+- Sorting
+- Booking details
+- Check-in workflow
+- Check-out workflow
+- Breakfast add-on handling
+- Payment confirmation
+- Booking deletion
 
 ### 🏨 Accommodation Management
 
 Manage the property's accommodation inventory.
 
-* View available accommodation units
-* Create new units
-* Edit existing units
-* Delete units
-* Configure capacity
-* Configure pricing
-* Configure discounts
-* Filter by discount status
-* Sort accommodation records
-* Upload accommodation images
-
-
+- View available accommodation units
+- Create new units
+- Edit existing units
+- Delete units
+- Configure capacity
+- Configure pricing
+- Configure discounts
+- Filter by discount status
+- Sort accommodation records
+- Upload accommodation images
 
 ### 👤 Account Management
 
 Authenticated staff members can manage their own accounts.
 
-* Profile editing
-* Avatar upload
-* Password changes
-* Account information management
-* Secure logout
+- Profile editing
+- Avatar upload
+- Password changes
+- Account information management
+- Secure logout
 
 ### ⚙️ Hotel Settings
 
 Hotel-wide operational settings can be configured from the settings interface.
 
-* Minimum stay duration
-* Maximum stay duration
-* Maximum guest capacity
-* Breakfast pricing
+- Minimum stay duration
+- Maximum stay duration
+- Maximum guest capacity
+- Breakfast pricing
 
 ### 🎨 User Experience
 
 Grand Arcadia includes a reusable interface system designed around everyday hotel operations.
 
-* Responsive application layout
-* Light and dark themes
-* Persistent theme preference
-* Reusable UI components
-* Modal confirmation flows
-* Toast notifications
-* Data tables
-* Interactive charts
-* Filtering and sorting
-* Form validation
+- Responsive application layout
+- Light and dark themes
+- Persistent theme preference
+- Reusable UI components
+- Modal confirmation flows
+- Toast notifications
+- Data tables
+- Interactive charts
+- Filtering and sorting
+- Form validation
 
 ---
 
 ## Tech Stack
 
-| Technology                  | Role                                            |
-| --------------------------- | ----------------------------------------------- |
+| Technology                        | Role                                            |
+| --------------------------------- | ----------------------------------------------- |
 | **React 19**                | Frontend application and component architecture |
 | **Vite**                    | Development server and build tooling            |
 | **React Router**            | Client-side routing and protected navigation    |
@@ -197,8 +205,8 @@ src/
 
 ### Directory Responsibilities
 
-| Directory   | Responsibility                                             |
-| ----------- | ---------------------------------------------------------- |
+| Directory     | Responsibility                                             |
+| ------------- | ---------------------------------------------------------- |
 | `features/` | Domain-specific application functionality                  |
 | `pages/`    | Top-level routed screens                                   |
 | `services/` | Supabase queries, mutations, and authentication operations |
@@ -219,14 +227,14 @@ The application communicates directly with Supabase through a dedicated service 
 
 ### Supabase is responsible for
 
-* PostgreSQL database access
-* User authentication
-* Profile/account operations
-* Accommodation data
-* Booking data
-* Guest data
-* Hotel settings
-* Image storage
+- PostgreSQL database access
+- User authentication
+- Profile/account operations
+- Accommodation data
+- Booking data
+- Guest data
+- Hotel settings
+- Image storage
 
 The application uses Supabase operations including:
 
@@ -245,12 +253,12 @@ single
 
 The application works with several primary data domains:
 
-* **Bookings** — reservations, dates, prices, status, guests, and accommodation references
-* **Accommodation** — capacity, pricing, discounts, and images
-* **Guests** — guest information and contact details
-* **Settings** — hotel-wide operational configuration
-* **User avatars** — profile images stored in Supabase Storage
-* **Accommodation images** — property images stored in Supabase Storage
+- **Bookings** — reservations, dates, prices, status, guests, and accommodation references
+- **Accommodation** — capacity, pricing, discounts, and images
+- **Guests** — guest information and contact details
+- **Settings** — hotel-wide operational configuration
+- **User avatars** — profile images stored in Supabase Storage
+- **Accommodation images** — property images stored in Supabase Storage
 
 Supabase Storage currently uses dedicated buckets for:
 
@@ -295,21 +303,21 @@ This separates server data from local UI state and provides caching, invalidatio
 
 `useQuery()` is used for data such as:
 
-* Current user
-* Bookings
-* Accommodation
-* Settings
-* Dashboard statistics
+- Current user
+- Bookings
+- Accommodation
+- Settings
+- Dashboard statistics
 
 ### Mutations
 
 `useMutation()` handles operations such as:
 
-* Authentication
-* Booking updates
-* Accommodation changes
-* Profile updates
-* Settings changes
+- Authentication
+- Booking updates
+- Accommodation changes
+- Profile updates
+- Settings changes
 
 After mutations, relevant queries are invalidated so the interface reflects the latest database state.
 
@@ -325,11 +333,11 @@ Several operational controls are represented through URL search parameters.
 
 This includes:
 
-* Booking filters
-* Booking sorting
-* Pagination
-* Accommodation filtering
-* Dashboard reporting periods
+- Booking filters
+- Booking sorting
+- Pagination
+- Accommodation filtering
+- Dashboard reporting periods
 
 Using URL state allows operational views to preserve their filtering and sorting configuration without introducing unnecessary global state.
 
@@ -343,17 +351,17 @@ The application supports both light and dark themes.
 
 ### Design characteristics
 
-* Light and dark themes
-* Persistent theme preference
-* Responsive dashboard layout
-* Reusable buttons and form controls
-* Reusable tables and menus
-* Modal workflows
-* Toast-based feedback
-* Data visualization
-* Branded application shell
-* Responsive navigation
-* Card-based dashboard widgets
+- Light and dark themes
+- Persistent theme preference
+- Responsive dashboard layout
+- Reusable buttons and form controls
+- Reusable tables and menus
+- Modal workflows
+- Toast-based feedback
+- Data visualization
+- Branded application shell
+- Responsive navigation
+- Card-based dashboard widgets
 
 The primary application layout is composed through `AppLayout`, with reusable UI primitives handling common interactions throughout the application.
 
@@ -365,10 +373,10 @@ The dashboard uses **Recharts** to visualize operational data.
 
 Current visualizations include:
 
-* Booking/sales trends
-* Stay-duration distribution
-* Operational summary metrics
-* Current-day activity
+- Booking/sales trends
+- Stay-duration distribution
+- Operational summary metrics
+- Current-day activity
 
 Dashboard calculations also use `date-fns` and the application's booking data to derive reporting periods and stay-related statistics.
 
@@ -380,9 +388,9 @@ Dashboard calculations also use `date-fns` and the application's booking data to
 
 Make sure you have:
 
-* Node.js
-* npm
-* A Supabase project
+- Node.js
+- npm
+- A Supabase project
 
 ### Installation
 
@@ -433,8 +441,8 @@ The application will be available through the local Vite development server.
 
 ## Available Scripts
 
-| Command           | Description                          |
-| ----------------- | ------------------------------------ |
+| Command             | Description                          |
+| ------------------- | ------------------------------------ |
 | `npm run dev`     | Start the development server         |
 | `npm run build`   | Create a production build            |
 | `npm run preview` | Preview the production build locally |
@@ -482,19 +490,19 @@ This workflow keeps the core operational activities accessible from a single man
 
 Some of the more notable implementation details include:
 
-* Feature-oriented React architecture
-* Dedicated Supabase service layer
-* TanStack Query server-state management
-* Query invalidation after mutations
-* Booking pagination with next-page prefetching
-* URL-driven filtering and sorting
-* Protected application routes
-* Persistent dark-mode preference
-* Reusable Styled Components design system
-* Supabase Storage integration for images
-* React Hook Form validation
-* Dashboard data visualization with Recharts
-* Responsive operational dashboard
+- Feature-oriented React architecture
+- Dedicated Supabase service layer
+- TanStack Query server-state management
+- Query invalidation after mutations
+- Booking pagination with next-page prefetching
+- URL-driven filtering and sorting
+- Protected application routes
+- Persistent dark-mode preference
+- Reusable Styled Components design system
+- Supabase Storage integration for images
+- React Hook Form validation
+- Dashboard data visualization with Recharts
+- Responsive operational dashboard
 
 ---
 
@@ -502,13 +510,13 @@ Some of the more notable implementation details include:
 
 Potential future improvements include:
 
-* Dedicated guest management with full CRUD and search
-* Granular role-based access control
-* A complete reservation creation workflow
-* Advanced operational reporting
-* Exportable booking and revenue reports
-* More detailed occupancy forecasting
-* Automated testing for authentication, bookings, and dashboard calculations
+- Dedicated guest management with full CRUD and search
+- Granular role-based access control
+- A complete reservation creation workflow
+- Advanced operational reporting
+- Exportable booking and revenue reports
+- More detailed occupancy forecasting
+- Automated testing for authentication, bookings, and dashboard calculations
 
 These features are **not currently implemented** and represent potential future development.
 
