@@ -1,7 +1,7 @@
 import {
   HiOutlineBanknotes,
   HiOutlineBriefcase,
-  HiOutlineCalendar,
+  HiOutlineCalendarDays,
   HiOutlineChartBar,
 } from "react-icons/hi2";
 import Stat from "./Stat";
@@ -30,7 +30,7 @@ function Stats({ bookings, confirmedStays, numDays, totalCabins }) {
         title="Sales"
       />
       <Stat
-        icon={<HiOutlineCalendar />}
+        icon={<HiOutlineCalendarDays />}
         color="indigo"
         value={checkins}
         title="Check-ins"

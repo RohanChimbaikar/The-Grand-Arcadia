@@ -1,26 +1,30 @@
+import { HiPlus } from "react-icons/hi2";
+import styled from "styled-components";
+
 import Button from "../../ui/Button";
 import CreateCabinForm from "./CreateCabinForm";
 import Modal from "../../ui/Modal";
 
+const AddButton = styled(Button)`
+  padding: 0.4rem;
+  min-width: 2.8rem;
+  height: 2.8rem;
+  font-size: 1.5rem;
+`;
+
 function AddCabin() {
   return (
-    <div>
-      <Modal>
-        <Modal.Open opens="cabin-form">
-          <Button>Add Cabin</Button>
-        </Modal.Open>
-        <Modal.Window name="cabin-form">
-          <CreateCabinForm />
-        </Modal.Window>
+    <Modal>
+      <Modal.Open opens="cabin-form">
+        <AddButton>
+          <HiPlus />
+        </AddButton>
+      </Modal.Open>
 
-        {/* <Modal.Open opens="table">
-        <Button>Show Table</Button>
-        </Modal.Open>
-        <Modal.Window name="table">
+      <Modal.Window name="cabin-form">
         <CreateCabinForm />
-        </Modal.Window> */}
-      </Modal>
-    </div>
+      </Modal.Window>
+    </Modal>
   );
 }
 
