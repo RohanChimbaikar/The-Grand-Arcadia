@@ -34,7 +34,12 @@ The application uses **Supabase** for authentication, database persistence, and 
 
 ## 🎥 Demo Video
 
-[**Watch the Grand Arcadia demo →**](https://drive.google.com/file/d/1rABnx1msUkl_DkC26_3RJVUxCb2ZcBMT/view?usp=sharing)
+[**Watch the Grand Arcadia demo →**]
+
+
+https://github.com/user-attachments/assets/3b11393f-85b1-44d2-9c05-f12205098aa4
+
+
 
 ---
 
